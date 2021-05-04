@@ -10,7 +10,7 @@ namespace GameStates
     /// This state machine is about the simplest state transition / requirement that I could imagine.
     /// If you want to make more / different state machines,
     /// just make this a base class and override the Awake() method
-    /// with a new set up state definitions.
+    /// with a new set of state definitions.
     /// </summary>
     public class StateMachineExample : MonoBehaviour
     {
@@ -39,6 +39,8 @@ namespace GameStates
             DontDestroyOnLoad(gameObject);
             
             _stateMachine = new StateMachine();
+            
+            //Subscribe to OnGameStateChanged elsewhere if you want to see when a state changes as well as get access to information in the state
             _stateMachine.OnStateChanged += state => OnGameStateChanged?.Invoke(state);
             _stateMachine.OnStateChanged += state => StateChanged(state);
 
@@ -48,8 +50,12 @@ namespace GameStates
             var thirdState = new ThirdState();
             
             //add transitions between states here
+            //the first transition requires a scene called IntroScene to be loaded - when it is, the system will automatically change to the second state
             _stateMachine.AddTransition(loadingState, secondState, ()=> SceneManager.GetActiveScene().name == "IntroScene" );
+            //this second transition relies on the state change to occur from within the state
             _stateMachine.AddTransition(secondState, thirdState, ()=> secondState.Finished);
+            //another example of a transition might be to test a Singleton
+            //_stateMachine.AddTransition(secondState, thirdState, ()=> MySingletonFromAnotherSystem.IsFinished);
         }
         
         private void StateChanged(IState state)
