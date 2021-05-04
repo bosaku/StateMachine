@@ -48,6 +48,9 @@ namespace GameStates
             var secondState = new SecondState(this); // pass a Monobehavior to a state's constructor to use a coroutine
             var thirdState = new ThirdState();
             
+            //Set the first state
+            _stateMachine.SetState(loadingState); 
+            
             //add transitions between states here
             //the first transition requires a scene called IntroScene to be loaded - when it is, the system will automatically change to the second state
             _stateMachine.AddTransition(loadingState, secondState, ()=> SceneManager.GetActiveScene().name == "IntroScene" );
