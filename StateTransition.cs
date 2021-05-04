@@ -1,6 +1,6 @@
 using System;
 
-namespace SFI.AI
+namespace SFI.GameStates
 {
     public class StateTransition
     {
