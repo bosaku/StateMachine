@@ -1,10 +1,9 @@
-﻿using System;
+using System;
 using System.Collections;
-using SFI.AI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace GameStates
+namespace SFI.GameStates
 {
     /// <summary>
     /// This state machine is about the simplest state transition / requirement that I could imagine.
