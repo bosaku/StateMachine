@@ -16,8 +16,9 @@ namespace GameStates
     {
         public static event Action<IState> OnGameStateChanged;
 
-        //Yes I am using a Singleton. They are still quite useful!
         protected StateMachine _stateMachine;
+        
+        //Yes I am using a Singleton. They are still quite useful!
         public static StateMachineExample _instance;
         
         public IState returnToState;
@@ -33,11 +34,8 @@ namespace GameStates
                 Destroy(gameObject);
                 return;
             }
-
             _instance = this;
-
             DontDestroyOnLoad(gameObject);
-            
             _stateMachine = new StateMachine();
             
             //Subscribe to OnGameStateChanged elsewhere if you want to see when a state changes as well as get access to information in the state
