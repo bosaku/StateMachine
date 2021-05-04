@@ -45,6 +45,7 @@ namespace GameStates
             _stateMachine.OnStateChanged += state => StateChanged(state);
 
             //create your states here
+            //these states define state behaviors and would probably not be in this class. 
             var loadingState = new ExampleState();
             var secondState = new SecondState(this); // pass a Monobehavior to a state's constructor to use a coroutine
             var thirdState = new ThirdState();
@@ -104,6 +105,7 @@ namespace GameStates
             yield return null;
             Finished = true;
         }
+        
         public void Tick()
         {
             
