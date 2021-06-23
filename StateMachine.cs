@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace SFI.GameStates
 {
@@ -89,6 +88,11 @@ namespace SFI.GameStates
             }
             
             return null;
+        }
+
+        public IState GetStartingTransition()
+        {
+            return _stateTransitions[0].From;
         }
     }
 }
